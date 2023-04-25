@@ -15,7 +15,7 @@ function countWords() {
 		// Calculate the number of chunks required
 		var numChunks = Math.ceil(numWords / 500);
 
-		// Display the number of chunks
+		// Display the number of chunks ll
 		wordCount.innerText += " This text exceeds 500 words and requires " + numChunks + " chunks.";
 	}
 }
