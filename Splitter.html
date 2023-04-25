@@ -14,11 +14,16 @@
 <body>
 	<div class="wrapper">
 		<label for="text-input">Enter text:</label>
-		<textarea id="text-input" style="width: 80%; resize: vertical;"></textarea>
+		<textarea id="text-input" style="width: 80%;" rows="1" oninput="updateRows(this)"></textarea>
 	</div>
 	<div class="wrapper">
 		<button onclick="displayChunks()">Count words and display chunks</button>
 	</div>
 	<div id="word-count"></div>
+	<script>
+		function updateRows(textarea) {
+			textarea.rows = textarea.value.split("\n").length;
+		}
+	</script>
 </body>
 </html>

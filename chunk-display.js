@@ -14,6 +14,7 @@ function copyToClipboard(text) {
 	document.body.removeChild(tempInput);
 }
 
+
 function displayChunks() {
 	// Get the text input element and the word count element
 	var textInput = document.getElementById("text-input");
@@ -27,25 +28,48 @@ function displayChunks() {
 		chunks.push(words.slice(i, i + 500).join(" "));
 	}
 
-	// Define a recursive function to display the chunks
-	var currentChunk = 0;
-	function displayChunk() {
+	// Define a function to add the event listener to the copy button
+	function addCopyButtonListener(copyButton, chunkElem, chunkIndex) {
+        copyButton.addEventListener("click", function() {
+            // Get the text of the current chunk
+            var currentChunkText = chunkElem.innerText;
+    
+            // Copy the text of the current chunk to the clipboard
+            copyToClipboard(currentChunkText);
+    
+            // Remove the current chunk and copy button
+            var chunkToRemove = chunkElem;
+            var copyButtonToRemove = copyButton;
+            wordCount.removeChild(chunkToRemove);
+            wordCount.removeChild(copyButtonToRemove);
+    
+            // If there are more chunks, display the next chunk
+            if (chunkIndex < chunks.length - 1) {
+                displayChunk(chunkIndex + 1);
+            }
+        });
+    }
+    
+
+	// Define a function to display the chunk
+	function displayChunk(chunkIndex) {
+		// Clear the word count element
+		wordCount.innerHTML = "";
+
 		// Display the current chunk
-		wordCount.innerHTML += "<p>" + chunks[currentChunk] + "</p><button onclick=\"copyToClipboard('" + chunks[currentChunk] + "')\">Copy</button>";
+		var chunkElem = document.createElement("p");
+		chunkElem.innerText = chunks[chunkIndex];
+		wordCount.appendChild(chunkElem);
 
-		// Increment the current chunk index
-		currentChunk++;
+		var copyButton = document.createElement("button");
+		copyButton.innerText = "Copy";
+		wordCount.appendChild(copyButton);
 
-		// If there are more chunks, add a click event listener to the copy button to display the next chunk
-		if (currentChunk < chunks.length) {
-			var copyButton = wordCount.getElementsByTagName("button")[currentChunk - 1];
-			copyButton.addEventListener("click", function() {
-				wordCount.innerHTML = wordCount.innerHTML.replace(copyButton.outerHTML, "");
-				displayChunk();
-			});
-		}
+		// Get the copy button element and add the event listener to it
+		addCopyButtonListener(copyButton, chunkElem, chunkIndex);
 	}
 
 	// Start the display process
-	displayChunk();
+	displayChunk(0);
 }
+
