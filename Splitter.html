@@ -5,38 +5,20 @@
 	<style>
 		.wrapper {
 			display: block;
-			margin-bottom: 10px; /* add some spacing between elements */
+			margin-bottom: 10px;
 		}
 	</style>
-	<script>
-		function adjustTextarea() {
-			// Get the textbox element
-			var textarea = document.getElementById("text-input");
-
-			// Set the number of rows to match the number of lines in the textbox
-			textarea.rows = textarea.value.split("\n").length;
-
-			// Set a minimum height of 2 rows
-			if (textarea.rows < 2) {
-				textarea.rows = 2;
-			}
-
-			// Set a maximum height of 10 rows
-			if (textarea.rows > 10) {
-				textarea.rows = 10;
-			}
-		}
-	</script>
+	<script src="word-counter.js"></script>
+	<script src="chunk-display.js"></script>
 </head>
 <body>
 	<div class="wrapper">
 		<label for="text-input">Enter text:</label>
-		<textarea id="text-input" style="width: 80%; resize: vertical;" oninput="adjustTextarea()"></textarea>
+		<textarea id="text-input" style="width: 80%; resize: vertical;"></textarea>
 	</div>
 	<div class="wrapper">
-		<button onclick="countWords()">Count words</button>
+		<button onclick="displayChunks()">Count words and display chunks</button>
 	</div>
-	<p id="word-count"></p>
-	<script src="word-counter.js"></script>
+	<div id="word-count"></div>
 </body>
 </html>
