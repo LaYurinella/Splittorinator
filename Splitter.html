@@ -2,11 +2,40 @@
 <html>
 <head>
 	<title>Word Counter</title>
+	<style>
+		.wrapper {
+			display: block;
+			margin-bottom: 10px; /* add some spacing between elements */
+		}
+	</style>
+	<script>
+		function adjustTextarea() {
+			// Get the textbox element
+			var textarea = document.getElementById("text-input");
+
+			// Set the number of rows to match the number of lines in the textbox
+			textarea.rows = textarea.value.split("\n").length;
+
+			// Set a minimum height of 2 rows
+			if (textarea.rows < 2) {
+				textarea.rows = 2;
+			}
+
+			// Set a maximum height of 10 rows
+			if (textarea.rows > 10) {
+				textarea.rows = 10;
+			}
+		}
+	</script>
 </head>
 <body>
-	<label for="text-input">Enter text:</label>
-	<input type="text" id="text-input" style="width: 80%; height: 200px;">
-	<button onclick="countWords()">Count words</button>
+	<div class="wrapper">
+		<label for="text-input">Enter text:</label>
+		<textarea id="text-input" style="width: 80%; resize: vertical;" oninput="adjustTextarea()"></textarea>
+	</div>
+	<div class="wrapper">
+		<button onclick="countWords()">Count words</button>
+	</div>
 	<p id="word-count"></p>
 	<script src="word-counter.js"></script>
 </body>
