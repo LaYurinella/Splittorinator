@@ -18,11 +18,11 @@ function copyToClipboard(text) {
 	const textInput = document.getElementById("text-input");
 	const wordCount = document.getElementById("text-display");
   
-	// Split the text into chunks of 500 words each
+	// Split the text into chunks of 1000 words each
 	const words = textInput.value.match(/\b\w+\b/g) || [];
 	const chunks = [];
-	for (let i = 0; i < words.length; i += 500) {
-	  chunks.push(words.slice(i, i + 500).join(" "));
+	for (let i = 0; i < words.length; i += 1000) {
+	  chunks.push(words.slice(i, i + 1000).join(" "));
 	}
   
 	// Define a function to add the event listener to the copy button
@@ -80,13 +80,13 @@ function copyToClipboard(text) {
 	// Display the word count
 	wordCount.textContent = `This text contains ${numWords} words.`;
   
-	// Check if the number of words exceeds 500
-	if (numWords > 500) {
+	// Check if the number of words exceeds 1000
+	if (numWords > 1000) {
 	  // Calculate the number of chunks required
-	  const numChunks = Math.ceil(numWords / 500);
+	  const numChunks = Math.ceil(numWords / 1000);
   
 	  // Display the number of chunks
-	  wordCount.textContent += ` This text exceeds 500 words and requires ${numChunks} chunks.`;
+	  wordCount.textContent += ` This text exceeds 1000 words and requires ${numChunks} chunks.`;
 	}
   }
   
