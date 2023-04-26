@@ -28,6 +28,17 @@ function displayChunks() {
 		chunks.push(words.slice(i, i + 500).join(" "));
 	}
 
+	// Display the word count
+	wordCount.innerText = "This text contains " + numWords + " words.";
+
+	// Check if the number of words exceeds 500
+	if (numWords > 500) {
+		// Calculate the number of chunks required
+		var numChunks = Math.ceil(numWords / 500);
+
+		// Display the number of chunks ll
+		wordCount.innerText += " This text exceeds 500 words and requires " + numChunks + " chunks.";
+
 	// Define a function to add the event listener to the copy button
 	function addCopyButtonListener(copyButton, chunkElem, chunkIndex) {
         copyButton.addEventListener("click", function() {
