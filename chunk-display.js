@@ -52,7 +52,7 @@ function copyToClipboard(text) {
   
 	  // Display the current chunk
 	  const chunkElem = document.createElement("p");
-	  chunkElem.textContent = chunks[chunkIndex] + "Your Prompt";
+	  chunkElem.textContent = chunks[chunkIndex] + "; Rephrase the above text into a more concise, clearer and in everyday language but preserve the details. If the text seems to be missing the start, use the unfinished part of the earlier prompt to complete the sentence.";
 	  wordCount.appendChild(chunkElem);
   
 	  const copyButton = document.createElement("button");
