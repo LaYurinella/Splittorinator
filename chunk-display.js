@@ -52,7 +52,7 @@ function copyToClipboard(text) {
   
 	  // Display the current chunk
 	  const chunkElem = document.createElement("p");
-	  chunkElem.textContent = chunks[chunkIndex] + "; Rephrase the above text into a more concise, clearer and in everyday language but preserve the details.";
+	  chunkElem.textContent = chunks[chunkIndex] + "; Rephrase the above text into a more concise, clearer and in everyday language but preserve the details. Do it in bullet points";
 	  wordCount.appendChild(chunkElem);
   
 	  const copyButton = document.createElement("button");
