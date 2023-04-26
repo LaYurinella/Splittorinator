@@ -52,7 +52,7 @@ function copyToClipboard(text) {
   
 	  // Display the current chunk
 	  const chunkElem = document.createElement("p");
-	  chunkElem.textContent = chunks[chunkIndex];
+	  chunkElem.textContent = chunks[chunkIndex] + "Your Prompt";
 	  wordCount.appendChild(chunkElem);
   
 	  const copyButton = document.createElement("button");
