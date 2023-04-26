@@ -16,9 +16,10 @@ function copyToClipboard(text) {
 
 
 function displayChunks() {
+
 	// Get the text input element and the word count element
 	var textInput = document.getElementById("text-input");
-	var wordCount = document.getElementById("word-count");
+	var wordCount = document.getElementById("text-display");
 
 	// Split the text into chunks of 500 words each
 	var words = textInput.value.match(/\b\w+\b/g);
